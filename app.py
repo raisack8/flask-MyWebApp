@@ -1,4 +1,3 @@
-from ensurepip import bootstrap
 from flask import Flask , render_template
 from flask_bootstrap import Bootstrap
 
@@ -9,7 +8,7 @@ bootstrap=Bootstrap(app)
 def index():
     return render_template('index.html')
 
-@app.route('/practice/top')
+@app.route('/practice/top',methods=['GET','POST'])
 def p_top():
     return render_template('practice/top.html')
 
