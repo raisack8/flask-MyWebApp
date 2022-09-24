@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://unpkg.com/vue@3.2.36/dist/vue.global.js"></script> -->
+    <script src="js/vueLocal.js"></script>
+</head>
+<body>
+    <a href="index.html">前へ</a>
+
+    <div id="todo-list-app">
+        <ol>
+          <!--
+            各 todo-item にその内容を表す todo オブジェクトを指定することで、
+            内容が動的に変化します。
+            後述する "key" も各コンポーネントに
+            指定する必要があります。
+          -->
+
+          <!-- 
+            v-bind
+            ...属性に対して変数を適用する
+            　　例）idやclassにそれぞれ値を格納したい場合
+
+            繰り返したい要素の属性にv-for
+           -->
+          <todo-item
+            v-for="item in groceryList"
+            
+            v-bind:todo="item"
+            v-bind:key="item.id"
+          ></todo-item>
+          <!-- 
+            todo-itemタグの属性に「todo」,「key」という要素を追加して、
+            それぞれを"item", "item.id"っていう変数を格納させる
+           -->
+        </ol>
+    </div>
+
+    <script>
+        const TodoItem = {
+        // propsの値がテンプレートに反映される
+        // ※複製したボタンのラベルを決定するのに使われる
+        props: ['todo'],
+        // コンポーネントは自分で作るHTMLタグ。
+        // 下でcomponentsにTodoItemが登録されているから
+        // コンポーネントにはTodoItemが含まれるという意味だろうか。
+        template: `<li>{{ todo.text }}</li>`
+        // 1,ひとつテンプレートが生成されるたびに'todo'をラベルとしたボタンが生成される
+        }
+
+        const TodoList = {
+        data() {
+            return {
+            groceryList: [
+                    { id: 0, text: 'Vegetables' },
+                    { id: 1, text: 'Cheese' },
+                    { id: 2, text: 'Whatever else humans are supposed to eat' }
+                    ]
+                }
+            },
+            components: {
+                TodoItem
+            }
+        }
+
+        const app = Vue.createApp(TodoList)
+        app.mount('#todo-list-app')
+    </script>
+</body>
+</html>
