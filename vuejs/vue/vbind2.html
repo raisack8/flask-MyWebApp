@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-bindとは②</title>
+    <script src="js/vueLocal.js"></script>
+</head>
+<body>
+    <a href="https://qiita.com/shizen-shin/items/17094a68a0369e126d41">
+        v-onイベント参考資料
+    </a>
+    <p>
+        v-bindによってクラスを書き換え、CSSを適用/解除をしている
+    </p>
+    <div id="colorChange">
+        <h1 :class="classname">カラーチェンジ</h1>
+        <p v-on:mouseover="ChangeColor" v-on:mouseout="ChangeColor">この行にカーソルを乗せたり離したり</p>
+        <p>{{classname}}</p>
+    </div>
+    <style>
+        .test{
+            color: red;
+        }
+    </style>
+    <script>
+        const ColorChange = {
+            data(){
+                return{
+                    classname:"test"
+                }
+            },
+            methods:{
+                ChangeColor(){
+                    if(this.classname=="test"){
+                        this.classname="practice"
+                    }else{
+                        this.classname="test" 
+                    }
+                }
+            }
+        }
+        Vue.createApp(ColorChange).mount('#colorChange')
+    </script>
+</body>
+</html>

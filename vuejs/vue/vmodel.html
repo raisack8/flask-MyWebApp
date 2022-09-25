@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-modelとは</title>
+    <script src="js/vueLocal.js"></script>
+</head>
+<body>
+    <h1>V-modelとは</h1><br>
+    <a href="vmodel2.html">次へ</a>
+    <a href="https://v3.ja.vuejs.org/guide/forms.html">参考ドキュメント[フォーム入力バインディング]</a>
+    <p>受け入れ型: コンポーネントのフォーム入力要素または出力に基づいて変化します。</p> 
+
+    <div id="vModelPractice">
+        <input v-model="message" @keyup="Check" placeholder="えなり以外を入力してください">
+        Message : {{message}}
+    </div>
+
+    <a href="https://codelikes.com/vue-js-events/#toc6">input関連のイベント参考資料</a>
+    <p>今回のイベントはinputの@keyup(入力する度にイベントが発生する)</p>
+    その他、<br>
+    @change(文字入力が完了してフォーカスが外れた際)、<br>
+    @keypress.enter(Enterボタンが押された際)、など
+    <style>
+        input{
+            width: 500px;
+        }
+    </style>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    message:""
+                }
+            },
+            methods:{
+                Check(){
+                    console.log("check!")
+                    if(this.message=="えなり"){
+                        alert("「えなり」だけは入力せんといてください")
+                        this.message=""
+                    }
+                }
+            }
+        }).mount('#vModelPractice')
+    </script>
+
+</body>
+</html>
