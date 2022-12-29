@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <script src="js/vueLocal.js"></script>
+</head>
+<body>
+    <h1>v-for②</h1>
+    <p>オブジェクトのプロパティに対して、v-for を使って反復処理することができます。</p>
+    <a href="../resource/vforObj.png"></a>
+    
+    <div id="vfor2">
+        <p v-for="obj in object">
+            {{obj.name}} : {{obj.age}} ::: {{obj.region}}
+        </p>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    object:[
+                        {name:"Tetsuya"},
+                        {age:26},
+                        {region:"Tochigi"}
+                    ]
+                }
+            },
+            methods:{
+
+            }
+        }).mount('#vfor2')
+    </script>
+</body>
+</html>

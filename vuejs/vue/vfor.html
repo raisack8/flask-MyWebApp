@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <script src="js/vueLocal.js"></script>
+</head>
+<body>
+    <h1>v-forとは</h1>
+    <p>ソースデータに基づいて要素またはテンプレートブロックを複数回レンダリングします。</p>
+    <a href="vfor2.html">v-for応用編『オブジェクトのループ』</a>
+
+    <div id="vfor">
+        <p>単純にリストを宣言してそれをリスト表示する方法</p>
+        <div v-for="item in exa1_text">
+            {{item.text}}
+        </div>
+
+        <button @click="Increase">↓　増やす</button>
+        <div v-for="item2 in exa2_lst">
+            {{item2.text}}
+        </div>
+
+        <br><a href="https://jp.vuejs.org/v2/guide/list.html">応用</a>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    exa1_text:[
+                       {text : "a"},
+                       {text : "b"},
+                       {text : "c"},
+                    ],
+                    exa2_lst:[]
+                }
+            },
+            methods:{
+                Increase(){
+                    // 変数を宣言したと木みたいに記述しなくてはいけない
+                    this.exa2_lst.push({text : "aaa"})
+                }
+            }
+        }).mount('#vfor')
+    </script>
+</body>
+</html>

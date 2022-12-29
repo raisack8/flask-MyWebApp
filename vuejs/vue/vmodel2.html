@@ -8,6 +8,36 @@
     <script src="js/vueLocal.js"></script>
 </head>
 <body>
-    
+    <h1>足し算のv-model</h1>
+    <div id="vSum">
+        <input v-model="num1" type="=number">
+        <p>+</p>
+        <input v-model="num2" type="=number">
+        <p>=</p>
+        <p>{{ number }}</p>
+        <button @click="PushBtn">Result</button>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    num1:"",
+                    num2:"",
+                    number:""
+                }
+            },
+            methods:{
+                PushBtn(){
+                    console.log(1)
+                    const result_sum = Number(this.num1) + Number (this.num2)
+                    if(isNaN(result_sum)){
+                        this.number="数値を入力してください"
+                        return
+                    }
+                    this.number=result_sum
+                }
+            }
+        }).mount('#vSum')
+    </script>
 </body>
 </html>
