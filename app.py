@@ -16,25 +16,30 @@ app.config['SECRET_KEY'] = os.urandom(24)
 # db = SQLAlchemy(app)
 bootstrap=Bootstrap(app)
 
-login_manager=LoginManager()
-login_manager.init_app(app)
+# login_manager=LoginManager()
+# login_manager.init_app(app)
 
-# SQLアルケミーがなかなか読み込まれない為断念
-class Post(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), nullable=False)
-    body = db.Column(db.String(300), nullable=False)
-    created_at=db.Column(db.DateTime,nullable=False,
-                       default =datetime.now(pytz.timezone('Asia/Tokyo')))
+# # SQLアルケミーがなかなか読み込まれない為断念
+# class Post(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     title = db.Column(db.String(50), nullable=False)
+#     body = db.Column(db.String(300), nullable=False)
+#     created_at=db.Column(db.DateTime,nullable=False,
+#                        default =datetime.now(pytz.timezone('Asia/Tokyo')))
 
-class User(UserMixin,db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(30), nullable=False, unique=True)
-    password = db.Column(db.String(20))
+# class User(UserMixin,db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     username = db.Column(db.String(30), nullable=False, unique=True)
+#     password = db.Column(db.String(20))
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+#----- FE App -----
+@app.route('/fe/top',methods=['GET','POST'])
+def fe_top():
+    return render_template('fe/fe_top.html')
 
 #----- Flask Practice -----
 

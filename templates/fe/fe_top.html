@@ -1,0 +1,21 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Practice/Flask練習{% endblock %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="title_head">
+        <h1><strong>FE試験対策アプリ</strong></h1>
+        <a href="{{ url_for('index') }}" class="btn">トップ</a>
+    </div>
+
+    <hr class="hr1">
+    <form action="#" method="post">
+        <input type="checkbox" name="b" value="a">
+    <form>
+</div>
+{% endblock %}
